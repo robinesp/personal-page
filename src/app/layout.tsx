@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
+import { config } from "@fortawesome/fontawesome-svg-core";
 import "./globals.css";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+config.autoAddCss = false;
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Poppins({
+  weight: ["200", "300", "400", "500"],
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Robin Esposito",

@@ -1,14 +1,47 @@
+import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div>
-        <nav className="flex flex-col">
-          <Link href="/experience">Experience</Link>
-          <Link href="/skills">Skills</Link>
-          <Link href="/contact">Contact</Link>
+      <Image
+        className="fixed top-40 right-52 rounded-[48px]"
+        src="/profile.jpg"
+        alt="Profile picture"
+        width={200}
+        height={200}
+        priority
+      />
+      <div className="fixed top-28 left-24">
+        <div id="title" className="flex flex-col">
+          <span className="text-4xl uppercase">Robin Esposito</span>
+          <span>Software engineer</span>
+        </div>
+        <div id="intro" className="w-1/3">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In bibendum
+          nunc a turpis vulputate sodales. Maecenas euismod sodales lectus, a
+          vestibulum enim placerat sed. Maecenas hendrerit in velit non
+          vehicula. Mauris non consectetur nulla, ac fermentum diam.
+        </div>
+      </div>
+      <div className="fixed bottom-32 right-96">
+        <nav className="flex flex-col text-3xl gap-2">
+          {["experience", "skills", "contact"].map((link) => (
+            <Link
+              href={"/" + link}
+              key={link}
+              className="flex items-center gap-2 mr-auto
+              relative before:content-[''] before:absolute before:block before:w-full before:h-[2px] 
+              before:bottom-0 before:left-0 before:bg-black
+              before:hover:scale-x-100 before:scale-x-0 before:origin-top-left
+              before:transition before:ease-in-out before:duration-500"
+            >
+              <FontAwesomeIcon icon={faArrowRightLong} size="xs" />
+              {link}
+            </Link>
+          ))}
         </nav>
       </div>
       {/* <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
