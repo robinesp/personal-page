@@ -36,7 +36,7 @@ export default function Contact() {
   return (
     <div className="w-[100%] h-[100vh] flex justify-center items-center">
       <animated.div
-        className="fixed top-[-3rem] lg:top-[4rem] left-[5%] z-[-1] w-[70%] lg:w-[70%]"
+        className="fixed top-[30vh] lg:top-[4rem] left-[-100%] lg:left-[5%] z-[-1] w-[170%] lg:w-[70%]"
         style={{ ...shapeInStyle, ...shapeRotateStyle }}
       >
         <Image
@@ -47,9 +47,9 @@ export default function Contact() {
           height={1500}
         />
       </animated.div>
-      <div className="text-3xl flex flex-col justify-center items-start gap-3 pl-72 pt-36">
+      <div className="text-2xl lg:text-3xl flex flex-col justify-center items-start gap-3 pl-24 pt-24 lg:pl-72 lg:pt-36">
         <animated.span
-          className="uppercase text-4xl font-bold"
+          className="uppercase text-3xl lg:text-4xl font-bold"
           style={trail[3]}
         >
           Get in touch
