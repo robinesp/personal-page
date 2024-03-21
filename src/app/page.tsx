@@ -119,24 +119,29 @@ export default function Home() {
       </animated.div>
       <animated.div
         id="title"
-        className="fixed top-64 lg:top-52 left-[10%] flex flex-col"
+        className="fixed top-56 lg:top-40 left-[10%] flex flex-col"
         style={textStyle}
       >
-        <span className="text-7xl lg:text-8xl leading-[3rem] font-light">Robin</span>
-        <span className="text-5xl lg:text-6xl leading-[4.5rem] tracking-wide font-normal">
+        <span className="text-5xl lg:text-8xl leading-none lg:leading-[3rem] font-light">
+          Robin
+        </span>
+        <span className="text-4xl lg:text-6xl leading-none lg:leading-[4.5rem] tracking-wide font-normal">
           Esposito
         </span>
         <span className="uppercase text-sm lg:text-base mb-3 tracking-wider font-extralight text-lg">
           software engineer
         </span>
-        <span className="w-2/3 text-sm lg:w-2/5 lg:text-base font-light">
+        <span className="w-2/3 text-xs lg:w-2/5 lg:text-base font-light">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. In bibendum
           nunc a turpis vulputate sodales. Maecenas euismod sodales lectus, a
           vestibulum enim placerat sed. Maecenas hendrerit in velit non
           vehicula. Mauris non consectetur nulla, ac fermentum diam.
         </span>
       </animated.div>
-      <animated.div className="fixed bottom-24 lg:bottom-24 left-1/3 lg:left-1/2" style={linksStyle}>
+      <animated.div
+        className="fixed bottom-24 lg:bottom-24 left-[40%] lg:left-1/2"
+        style={linksStyle}
+      >
         <nav className="flex flex-col text-2xl lg:text-3xl gap-2">
           {["experience", "skills", "contact"].map((link) => (
             <Link

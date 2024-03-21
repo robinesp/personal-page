@@ -10,7 +10,7 @@ export default function Background() {
       opacity: 1,
     },
     config: {
-      duration: 1000,
+      duration: 1500,
       easing: easings.easeOutBack,
     },
   };
@@ -34,15 +34,15 @@ export default function Background() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useSpring({
       from: { rotate: "0deg" },
-      to: { rotate: 15 + Math.random() * 10 + "deg" },
+      to: { rotate: 15 + Math.random() * 20 + "deg" },
       delay: Math.random() * 1000,
       loop: { reverse: true },
-      config: { duration: 10000 + Math.random() * 10000 },
+      config: { duration: 10000 + Math.random() * 2000 },
     })
   );
 
   return (
-    <div id="background_shapes" className="opacity-60 select-none">
+    <div id="background_shapes" className="opacity-70 select-none">
       {shapes.map((shape, ix) => (
         <animated.div
           key={ix}
