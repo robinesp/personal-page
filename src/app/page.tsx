@@ -105,11 +105,11 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between p-24 text-[#2e2e2e]">
       <Background />
       <animated.div
-        className="fixed top-32 right-[20%] w-[15%] overflow-hidden"
+        className="fixed overflow-hidden top-12 right-[20%] w-[35%] lg:top-32 lg:w-[15%]"
         style={imageStyle}
       >
         <Image
-          className="rounded-[60px]"
+          className="rounded-[30px] lg:rounded-[60px]"
           src="/profile.jpg"
           alt="Profile picture"
           width={500}
@@ -119,25 +119,25 @@ export default function Home() {
       </animated.div>
       <animated.div
         id="title"
-        className="fixed top-52 left-[10%] flex flex-col"
+        className="fixed top-64 lg:top-52 left-[10%] flex flex-col"
         style={textStyle}
       >
-        <span className="text-8xl leading-[3rem] font-light">Robin</span>
-        <span className="text-6xl leading-[4.5rem] tracking-wide font-normal">
+        <span className="text-7xl lg:text-8xl leading-[3rem] font-light">Robin</span>
+        <span className="text-5xl lg:text-6xl leading-[4.5rem] tracking-wide font-normal">
           Esposito
         </span>
-        <span className="uppercase mb-3 tracking-wider font-extralight text-lg">
+        <span className="uppercase text-sm lg:text-base mb-3 tracking-wider font-extralight text-lg">
           software engineer
         </span>
-        <span className="w-2/5 font-light">
+        <span className="w-2/3 text-sm lg:w-2/5 lg:text-base font-light">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. In bibendum
           nunc a turpis vulputate sodales. Maecenas euismod sodales lectus, a
           vestibulum enim placerat sed. Maecenas hendrerit in velit non
           vehicula. Mauris non consectetur nulla, ac fermentum diam.
         </span>
       </animated.div>
-      <animated.div className="fixed bottom-24 left-1/2" style={linksStyle}>
-        <nav className="flex flex-col text-3xl gap-2">
+      <animated.div className="fixed bottom-24 lg:bottom-24 left-1/3 lg:left-1/2" style={linksStyle}>
+        <nav className="flex flex-col text-2xl lg:text-3xl gap-2">
           {["experience", "skills", "contact"].map((link) => (
             <Link
               href={"/" + link}

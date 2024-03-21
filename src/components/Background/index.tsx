@@ -10,7 +10,7 @@ export default function Background() {
       opacity: 1,
     },
     config: {
-      duration: 3000,
+      duration: 1000,
       easing: easings.easeOutBack,
     },
   };
@@ -54,7 +54,7 @@ export default function Background() {
         >
           <Image
             priority
-            className={"rotate-[" + shape.rotation + "deg]"}
+            className={shape.rotation}
             src={"/shapes/" + shape.filename}
             alt="background_shape"
             width={1000}
