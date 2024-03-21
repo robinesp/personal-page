@@ -42,7 +42,7 @@ export default function Background() {
   );
 
   return (
-    <div id="background_shapes" className="opacity-60">
+    <div id="background_shapes" className="opacity-60 select-none">
       {shapes.map((shape, ix) => (
         <animated.div
           key={ix}

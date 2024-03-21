@@ -21,7 +21,7 @@ const shapes = [
     originY: -20,
     rotation: 0,
     fullRotation: true,
-    className: "fixed bottom-[-50%] left-[-10%] z-[-2] w-[45%]",
+    className: "fixed bottom-[-55%] left-[-10%] z-[-2] w-[45%]",
   },
   {
     filename: "shape_4.svg",

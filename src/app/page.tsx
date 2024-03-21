@@ -105,21 +105,21 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between p-24 text-[#2e2e2e]">
       <Background />
       <animated.div
-        className="fixed top-32 right-[15%] overflow-hidden"
+        className="fixed top-32 right-[20%] w-[15%] overflow-hidden"
         style={imageStyle}
       >
         <Image
           className="rounded-[60px]"
           src="/profile.jpg"
           alt="Profile picture"
-          width={200}
-          height={200}
+          width={500}
+          height={500}
           priority
         />
       </animated.div>
       <animated.div
         id="title"
-        className="fixed top-32 left-[10%] flex flex-col"
+        className="fixed top-52 left-[10%] flex flex-col"
         style={textStyle}
       >
         <span className="text-8xl leading-[3rem] font-light">Robin</span>
