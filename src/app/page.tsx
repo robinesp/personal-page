@@ -37,18 +37,6 @@ export default function Home() {
     },
   }));
 
-  const backgroundSettings = {
-    to: {
-      x: 0,
-      y: 0,
-      opacity: 1,
-    },
-    config: {
-      duration: 5000,
-      easing: easings.easeOutBack,
-    },
-  };
-
   useEffect(() => {
     const bounceConfig = {
       easing: easings.easeOutBack,
@@ -102,7 +90,7 @@ export default function Home() {
   }, [imageApi, textApi, linksApi]);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 text-[#2e2e2e]">
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <Background />
       <animated.div
         className="fixed overflow-hidden top-12 right-[20%] w-[35%] lg:top-32 lg:w-[15%]"

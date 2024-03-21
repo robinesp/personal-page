@@ -6,7 +6,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 
 config.autoAddCss = false;
 
-const inter = Poppins({
+const fontClass = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
 });
@@ -23,7 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className + " bg-[#f8f6f2]"}>{children}</body>
+      <body className={fontClass.className + " bg-[#f8f6f2] text-[#2e2e2e]"}>
+        {children}
+      </body>
     </html>
   );
 }
