@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { animated, useSpring, easings } from "@react-spring/web";
 import { useEffect } from "react";
+import Background from "@/components/Background";
 
 export default function Home() {
   const duration = 100;
@@ -43,41 +44,10 @@ export default function Home() {
       opacity: 1,
     },
     config: {
-      duration: 2000,
+      duration: 5000,
       easing: easings.easeOutBack,
     },
   };
-
-  const shape1Style = useSpring({
-    from: { x: 100, y: 40, opacity: 0 },
-    ...backgroundSettings,
-  });
-  const shape2Style = useSpring({
-    from: { x: -20, y: -100, opacity: 0 },
-    ...backgroundSettings,
-  });
-  const shape3Style = useSpring({
-    from: { x: -150, y: -20, opacity: 0 },
-    ...backgroundSettings,
-  });
-  const shape4Style = useSpring({
-    from: { x: -20, y: 100, opacity: 0 },
-    ...backgroundSettings,
-  });
-
-  const partialRotationStyle = useSpring({
-    from: { rotate: "0deg" },
-    to: { rotate: "20deg" },
-    loop: { reverse: true },
-    config: { duration: 5000 },
-  });
-
-  const fullRotationStyle = useSpring({
-    from: { rotate: "0deg" },
-    to: { rotate: "360deg" },
-    loop: true,
-    config: { duration: 10000 },
-  });
 
   useEffect(() => {
     const bounceConfig = {
@@ -133,54 +103,9 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24 text-[#2e2e2e]">
-      <div id="background_shapes">
-        <animated.div
-          className="fixed top-32 right-[8%] z-[-2] w-[30%] rotate-[60deg]"
-          style={{ ...shape1Style, ...fullRotationStyle }}
-        >
-          <Image
-            src="/shapes/shape_1.svg"
-            alt="background_shape"
-            width={1000}
-            height={1000}
-          />
-        </animated.div>
-        <animated.div
-          className="fixed top-16 right-[25%] z-[-1] w-[15%] rotate-[90deg]"
-          style={{ ...shape2Style, ...partialRotationStyle }}
-        >
-          <Image
-            src="/shapes/shape_4.svg"
-            alt="background_shape"
-            width={1000}
-            height={1000}
-          />
-        </animated.div>
-        <animated.div
-          className="fixed bottom-[-55%] left-[-10%] z-[-2] w-[45%] rotate-[90deg]"
-          style={{ ...shape3Style, ...fullRotationStyle }}
-        >
-          <Image
-            src="/shapes/shape_3.svg"
-            alt="background_shape"
-            width={1000}
-            height={1000}
-          />
-        </animated.div>
-        <animated.div
-          className="fixed bottom-[-10%] left-[15%] z-[-1] w-[25%] rotate-[150deg]"
-          style={{ ...shape4Style, ...partialRotationStyle }}
-        >
-          <Image
-            src="/shapes/shape_7.svg"
-            alt="background_shape"
-            width={1000}
-            height={1000}
-          />
-        </animated.div>
-      </div>
+      <Background />
       <animated.div
-        className="fixed top-32 right-[20%] overflow-hidden"
+        className="fixed top-32 right-[15%] overflow-hidden"
         style={imageStyle}
       >
         <Image
