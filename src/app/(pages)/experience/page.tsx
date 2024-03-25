@@ -2,7 +2,14 @@
 
 import Image from "next/image";
 import items from "./items";
-import { animated, easings, useTrail } from "@react-spring/web";
+import {
+  animated,
+  easings,
+  useScroll,
+  useSpring,
+  useTrail,
+} from "@react-spring/web";
+import { useEffect, useRef, useState } from "react";
 
 export default function Experience() {
   const trail = useTrail(items.length, {
@@ -15,12 +22,82 @@ export default function Experience() {
     },
   });
 
+  const isLoaded = useRef(false);
+  const logoRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const logoSize = 35;
+  const [pointerPositionX, setPointerPositionX] = useState(0);
+  const pointerPositionY = 300;
+  const pointerSize = 8;
+
+  const logoAnimations = items.map(() =>
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useSpring(() => ({
+      scale: 1,
+      y: 0,
+    }))
+  );
+
+  const [pointerStyle, pointerApi] = useSpring(() => ({
+    scale: 1,
+    top: pointerPositionY,
+    opacity: 0,
+    zIndex: 0,
+    config: { mass: 1, tension: 1000, friction: 250 },
+  }));
+
+  useScroll({
+    onChange: ({ value: { scrollYProgress } }) => {
+      let entering = false;
+      let enteringTop = 0;
+      logoRefs.current.map((logo, ix) => {
+        const logoStart = logo?.getBoundingClientRect().top as number;
+        const logoEnd = logoStart + logoSize * 2;
+        const currentPointer = scrollYProgress + pointerPositionY;
+
+        if (currentPointer > logoStart - 20 && currentPointer <= logoEnd + 20) {
+          logoAnimations[ix][1].start({ scale: 2, y: logoSize / 2 });
+        } else {
+          logoAnimations[ix][1].start({ scale: 1, y: 0 });
+        }
+
+        if (currentPointer > logoStart - 20 && currentPointer <= logoEnd + 20) {
+          entering = true;
+          enteringTop = logoStart + logoSize;
+        }
+      });
+
+      pointerApi.start(
+        entering
+          ? { scale: 8, top: enteringTop, opacity: 0.5, zIndex: 1 }
+          : { scale: 1, top: pointerPositionY, opacity: 1, zIndex: 1 }
+      );
+    },
+  });
+
+  useEffect(() => {
+    const firstLogo = logoRefs.current[0]?.getBoundingClientRect() as DOMRect;
+    setPointerPositionX(firstLogo.left + firstLogo.width / 2 - pointerSize / 2);
+    isLoaded.current = true;
+  }, [logoRefs]);
+
   return (
-    <main className="flex min-h-screen flex-col justify-between pt-32">
-      <div id="timeline" className="flex flex-col justify-start gap-8 pb-32">
+    <main className="flex min-h-screen flex-col justify-between mt-64 lg:mt-72 mb-[32rem] lg:mb-96">
+      {isLoaded.current && (
+        <animated.div
+          id="pointer"
+          className="fixed bg-[#7C7ADF] rounded-full"
+          style={{
+            ...pointerStyle,
+            width: pointerSize + "px",
+            height: pointerSize + "px",
+            left: pointerPositionX,
+          }}
+        />
+      )}
+      <div id="timeline" className="flex flex-col justify-start gap-8">
         {items.map((item, ix) => (
           <animated.div
-            className="flex min-h-44"
+            className="flex mb-4 lg:min-h-44"
             key={item.companyName}
             style={trail[ix]}
           >
@@ -32,18 +109,27 @@ export default function Experience() {
                 {item.place}
               </span>
             </div>
-            <div className="middle relative w-[15%] lg:w-[10%]">
-              <div className="absolute z-[-1] top-[-24px] left-[50%] translate-x-[-50%] h-[400px] lg:h-[250px] w-[10px] bg-zinc-200	rounded-3xl" />
-              <Image
-                className="absolute top-2 left-[50%] translate-x-[-50%] bg-white rounded-full"
-                src={item.companyLogo}
-                alt={item.companyName}
-                width={35}
-                height={35}
-              />
+            <div className="middle relative w-[25%] lg:w-[10%]">
+              <div className="absolute z-[0] top-[-24px] left-[50%] translate-x-[-50%] h-[300px] lg:h-[250px] w-[10px] bg-zinc-200	rounded-3xl" />
+              <div
+                ref={(el) => (logoRefs.current[ix] = el)}
+                className="logo-container z-[2] absolute flex justify-center items-center lg:top-2 left-[50%] translate-x-[-50%] w-full"
+              >
+                <animated.div
+                  className="flex items-center overflow-hidden lg:top-2 w-[35px] h-[35px] bg-white rounded-full"
+                  style={logoAnimations[ix][0]}
+                >
+                  <Image
+                    src={item.companyLogo}
+                    alt={item.companyName}
+                    width={150}
+                    height={150}
+                  />
+                </animated.div>
+              </div>
             </div>
-            <div className="right-side flex flex-col w-[40%] lg:w-1/3">
-              <span className="uppercase font-semibold text-lg lg:text-2xl">
+            <div className="right-side flex flex-col w-[50%] lg:w-1/3">
+              <span className="uppercase font-semibold text-base lg:text-2xl">
                 {item.companyName}
               </span>
               <span className="lowercase text-base lg:text-lg font-light mb-2">

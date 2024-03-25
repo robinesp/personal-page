@@ -45,46 +45,32 @@ export default function Home() {
 
     // profile pic animations
     imageApi.start({
-      to: {
-        opacity: 1,
-      },
+      to: { opacity: 1 },
     });
     imageApi.start({
       config: bounceConfig,
-      to: {
-        y: 0,
-      },
+      to: { y: 0 },
     });
 
     // text animations
     setTimeout(() => {
       textApi.start({
-        to: {
-          opacity: 1,
-          lineHeight: 1.2,
-        },
+        to: { opacity: 1, lineHeight: 1.2 },
       });
       textApi.start({
         config: bounceConfig,
-        to: {
-          y: 0,
-        },
+        to: { y: 0 },
       });
     }, 250);
 
     // links animations
     setTimeout(() => {
       linksApi.start({
-        to: {
-          opacity: 1,
-        },
+        to: { opacity: 1 },
       });
       linksApi.start({
         config: bounceConfig,
-        to: {
-          y: 0,
-          gap: 0.5,
-        },
+        to: { y: 0, gap: 0.5 },
       });
     }, 500);
   }, [imageApi, textApi, linksApi]);

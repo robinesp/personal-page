@@ -6,7 +6,10 @@ import { ReactNode } from "react";
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <main>
-      <Link href={"/"} className="fixed top-16 left-[10%] lg:left-[5%]">
+      <Link
+        href={"/"}
+        className="fixed top-16 lg:top-16 left-[10%] lg:left-[5%]"
+      >
         <FontAwesomeIcon icon={faChevronLeft} size="3x" />
       </Link>
       {children}
