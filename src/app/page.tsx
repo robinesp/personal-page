@@ -120,10 +120,10 @@ export default function Home() {
           software engineer
         </span>
         <span className="w-2/3 text-xs lg:w-2/5 lg:text-base font-light">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In bibendum
-          nunc a turpis vulputate sodales. Maecenas euismod sodales lectus, a
-          vestibulum enim placerat sed. Maecenas hendrerit in velit non
-          vehicula. Mauris non consectetur nulla, ac fermentum diam.
+          Hey! I’m a software engineer based in the Netherlands. After some
+          detours into data science, artificial intelligence and augmented
+          reality I found my path in frontend development, focusing on building
+          pretty, snappy things and intuitive interfaces.
         </span>
       </animated.div>
       <animated.div
