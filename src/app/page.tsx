@@ -93,14 +93,11 @@ export default function Home() {
       </animated.div>
       <animated.div
         id="title"
-        className="fixed top-56 lg:top-40 left-[10%] flex flex-col"
+        className="fixed top-64 lg:top-40 left-[10%] flex flex-col"
         style={textStyle}
       >
-        <span className="text-5xl lg:text-8xl leading-none lg:leading-[3rem] font-light">
-          Robin
-        </span>
-        <span className="text-4xl lg:text-6xl leading-none lg:leading-[4.5rem] tracking-wide font-normal">
-          Esposito
+        <span className="text-3xl lg:text-5xl leading-none lg:leading-[4.5rem] tracking-wide font-bold uppercase">
+          Robin Esposito
         </span>
         <span className="uppercase text-sm lg:text-base mb-3 tracking-wider font-extralight text-lg">
           software engineer
