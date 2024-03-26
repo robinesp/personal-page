@@ -16,10 +16,7 @@ export default function Experience() {
     opacity: 1,
     y: 0,
     from: { opacity: 0, y: -50 },
-    config: {
-      duration: 1000,
-      easing: easings.easeOutExpo,
-    },
+    config: { duration: 1000, easing: easings.easeOutExpo },
   });
 
   const [isLoaded, setIsLoaded] = useState(false);
@@ -31,10 +28,12 @@ export default function Experience() {
 
   const logoAnimations = items.map(() =>
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    useSpring(() => ({
-      scale: 1,
-      y: 0,
-    }))
+    useSpring(() => ({ scale: 1, y: 0 }))
+  );
+
+  const opacityAnimations = items.map(() =>
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useSpring(() => ({ opacity: 0.7 }))
   );
 
   const [pointerStyle, pointerApi] = useSpring(() => ({
@@ -53,17 +52,19 @@ export default function Experience() {
         const logoStart = logo?.getBoundingClientRect().top as number;
         const logoEnd = logoStart + logoSize * 2;
         const currentPointer = scrollYProgress + pointerPositionY;
-        const bias = 25;
+        const bias = 30;
 
         if (
           currentPointer > logoStart - bias &&
           currentPointer <= logoEnd + bias
         ) {
           logoAnimations[ix][1].start({ scale: 2, y: logoSize / 2 });
+          opacityAnimations[ix][1].start({ opacity: 1 });
           entering = true;
           enteringTop = logoStart + logoSize;
         } else {
           logoAnimations[ix][1].start({ scale: 1, y: 0 });
+          opacityAnimations[ix][1].start({ opacity: 0.7 });
         }
       });
 
@@ -110,25 +111,32 @@ export default function Experience() {
             key={item.companyName}
             style={trail[ix]}
           >
-            <div className="left-side flex flex-col items-end w-[23%] lg:w-1/3">
+            <animated.div
+              className="left-side flex flex-col items-end w-[23%] lg:w-1/3"
+              style={opacityAnimations[ix][0]}
+            >
               <span className="text-sm lg:text-2xl text-right">
                 {item.time}
               </span>
               <span className="text-xs lg:text-base text-right">
                 {item.place}
               </span>
-            </div>
+            </animated.div>
             <div className="middle relative w-[25%] lg:w-[10%]">
-              <div className="absolute z-[0] top-[-24px] left-[50%] translate-x-[-50%] h-[300px] lg:h-[250px] w-[10px] bg-zinc-200	rounded-3xl" />
+              <div className="vertical-line absolute z-[0] top-[-24px] left-[50%] translate-x-[-50%] h-[300px] lg:h-[350px] w-[10px] bg-zinc-200 rounded-3xl" />
               <div
                 ref={(el) => (logoRefs.current[ix] = el)}
-                className="logo-container z-[2] absolute flex justify-center items-center lg:top-2 left-[50%] translate-x-[-50%] w-full"
+                className="logo-container z-[20] absolute flex justify-center items-center lg:top-2 left-[50%] translate-x-[-50%] w-full"
               >
                 <animated.div
                   className="flex items-center overflow-hidden lg:top-2 w-[35px] h-[35px] bg-white rounded-full"
-                  style={logoAnimations[ix][0]}
+                  style={{
+                    ...logoAnimations[ix][0],
+                    ...opacityAnimations[ix][0],
+                  }}
                 >
                   <Image
+                    priority
                     src={item.companyLogo}
                     alt={item.companyName}
                     width={150}
@@ -137,7 +145,10 @@ export default function Experience() {
                 </animated.div>
               </div>
             </div>
-            <div className="right-side flex flex-col w-[50%] lg:w-1/3">
+            <animated.div
+              className="right-side flex flex-col w-[50%] lg:w-1/3"
+              style={opacityAnimations[ix][0]}
+            >
               <span className="uppercase font-semibold text-base lg:text-2xl">
                 {item.companyName}
               </span>
@@ -154,7 +165,7 @@ export default function Experience() {
                   </span>
                 ))}
               </span>
-            </div>
+            </animated.div>
           </animated.div>
         ))}
       </div>
