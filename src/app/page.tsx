@@ -93,7 +93,7 @@ export default function Home() {
       </animated.div>
       <animated.div
         id="title"
-        className="fixed top-64 lg:top-40 left-[10%] flex flex-col"
+        className="fixed top-56 lg:top-40 left-[10%] flex flex-col"
         style={textStyle}
       >
         <span className="text-3xl lg:text-5xl leading-none lg:leading-[4.5rem] tracking-wide font-bold uppercase">
@@ -102,7 +102,7 @@ export default function Home() {
         <span className="uppercase text-sm lg:text-base mb-3 tracking-wider font-extralight text-lg">
           software engineer
         </span>
-        <span className="w-2/3 text-xs lg:w-2/5 lg:text-base font-light">
+        <span className="w-2/3 lg:w-2/5 text-[4vw] lg:text-base leading-[5vw] font-light">
           Hey! I’m a software engineer based in the Netherlands. After some
           detours into data science, artificial intelligence and augmented
           reality I found my path in frontend development, focusing on building

@@ -23,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-full">
       <body className={fontClass.className + " bg-[#f8f6f2] text-[#2e2e2e]"}>
         {children}
         <Analytics />
