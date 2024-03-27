@@ -4,83 +4,36 @@ import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
-import { animated, useSpring, easings } from "@react-spring/web";
-import { useEffect } from "react";
+import { animated, useSpring, easings, useTrail } from "@react-spring/web";
 import Background from "@/components/Background";
 
 export default function Home() {
-  const duration = 100;
-
-  const [imageStyle, imageApi] = useSpring(() => ({
-    y: -50,
-    opacity: 0,
+  const opacityTrail = useTrail(3, {
+    opacity: 1,
+    maxHeight: "100%",
+    overflow: "hidden",
+    from: { opacity: 0, maxHeight: "0" },
     config: {
-      duration,
+      duration: 1000,
+      easing: easings.easeOutExpo,
     },
-  }));
+  });
 
-  const [textStyle, textApi] = useSpring(() => ({
-    y: -50,
-    opacity: 0,
-    lineHeight: 0,
+  const slideInTrail = useTrail(3, {
+    y: 0,
+    from: { y: -50 },
     config: {
-      duration,
-    },
-  }));
-
-  const [linksStyle, linksApi] = useSpring(() => ({
-    y: -50,
-    opacity: 0,
-    gap: 1,
-    config: {
-      duration,
-    },
-  }));
-
-  useEffect(() => {
-    const bounceConfig = {
-      easing: easings.easeOutBack,
       duration: 500,
-    };
-
-    // profile pic animations
-    imageApi.start({
-      to: { opacity: 1 },
-    });
-    imageApi.start({
-      config: bounceConfig,
-      to: { y: 0 },
-    });
-
-    // text animations
-    setTimeout(() => {
-      textApi.start({
-        to: { opacity: 1, lineHeight: 1.2 },
-      });
-      textApi.start({
-        config: bounceConfig,
-        to: { y: 0 },
-      });
-    }, 250);
-
-    // links animations
-    setTimeout(() => {
-      linksApi.start({
-        to: { opacity: 1 },
-      });
-      linksApi.start({
-        config: bounceConfig,
-        to: { y: 0, gap: 0.5 },
-      });
-    }, 500);
-  }, [imageApi, textApi, linksApi]);
+      easing: easings.easeOutBack,
+    },
+  });
 
   return (
     <main className="flex h-full flex-col items-center justify-between p-24">
       <Background />
       <animated.div
         className="fixed overflow-hidden top-12 right-[20%] w-[35%] lg:top-32 lg:w-[15%]"
-        style={imageStyle}
+        style={{ ...slideInTrail[0], ...opacityTrail[0] }}
       >
         <Image
           className="rounded-[30px] lg:rounded-[60px]"
@@ -94,7 +47,7 @@ export default function Home() {
       <animated.div
         id="title"
         className="fixed top-56 lg:top-40 left-[10%] flex flex-col"
-        style={textStyle}
+        style={{ ...slideInTrail[1], ...opacityTrail[1] }}
       >
         <span className="text-3xl lg:text-5xl leading-none lg:leading-[4.5rem] tracking-wide font-bold uppercase">
           Robin Esposito
@@ -111,7 +64,7 @@ export default function Home() {
       </animated.div>
       <animated.div
         className="fixed top-[75%] lg:top-[70%] left-[40%] lg:left-1/2"
-        style={linksStyle}
+        style={{ ...slideInTrail[2], ...opacityTrail[2] }}
       >
         <nav className="flex flex-col text-2xl lg:text-3xl gap-2">
           {["experience", "skills", "contact"].map((link) => (
