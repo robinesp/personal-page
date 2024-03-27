@@ -47,7 +47,7 @@ export default function Contact() {
           height={1500}
         />
       </animated.div>
-      <div className="text-2xl lg:text-3xl flex flex-col justify-center items-start gap-3 pl-24 pt-24 lg:pl-72 lg:pt-36">
+      <div className="fixed text-2xl lg:text-3xl flex flex-col justify-center items-start gap-3 left-[30%] top-[45vh] lg:left-[50%]">
         <animated.span
           className="uppercase text-3xl lg:text-4xl font-bold"
           style={trail[3]}

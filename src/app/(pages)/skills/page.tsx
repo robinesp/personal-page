@@ -56,7 +56,7 @@ export default function Skills() {
   const titleClass = "uppercase text-xl font-bold mb-2";
 
   return (
-    <main className="flex min-h-screen lg:h-screen flex-col items-center justify-between pb-32 lg:pb-4 pt-40 lg:pt-24 2xl:pt-48 px-[20%] lg:px-[15%] overflow-hidden">
+    <main className="flex min-h-screen lg:h-screen flex-col items-center justify-between pb-32 lg:pb-4 pt-40 lg:pt-24 2xl:pt-48 px-[17%] lg:px-[15%] overflow-hidden">
       <animated.div
         className="divider hidden lg:block fixed left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] rounded-full h-[60%] w-1 bg-zinc-200"
         style={dividerStyle}
