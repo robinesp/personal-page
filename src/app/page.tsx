@@ -110,7 +110,7 @@ export default function Home() {
         </span>
       </animated.div>
       <animated.div
-        className="fixed bottom-24 lg:bottom-24 left-[40%] lg:left-1/2"
+        className="fixed top-[75%] lg:top-[70%] left-[40%] lg:left-1/2"
         style={linksStyle}
       >
         <nav className="flex flex-col text-2xl lg:text-3xl gap-2">
