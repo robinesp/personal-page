@@ -34,7 +34,7 @@ export default function Contact() {
   });
 
   return (
-    <div className="w-[100%] h-[100vh] flex justify-center items-center">
+    <div className="w-full h-full flex justify-center items-center">
       <animated.div
         className="fixed top-[30vh] lg:top-[4rem] left-[-100%] lg:left-[5%] z-[-1] w-[170%] lg:w-[70%]"
         style={{ ...shapeInStyle, ...shapeRotateStyle }}

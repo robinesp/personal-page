@@ -76,7 +76,7 @@ export default function Home() {
   }, [imageApi, textApi, linksApi]);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex h-full flex-col items-center justify-between p-24">
       <Background />
       <animated.div
         className="fixed overflow-hidden top-12 right-[20%] w-[35%] lg:top-32 lg:w-[15%]"
