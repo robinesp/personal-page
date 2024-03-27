@@ -1,10 +1,12 @@
-import { width } from "@fortawesome/free-regular-svg-icons/faAddressBook";
+"use client";
+
 import { coding, skills, languages, certificates } from "./skills";
 import {
   faFileSignature,
   faCircleCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { easings, useTrail, animated, useSpring } from "@react-spring/web";
 
 const getColorFromGradient = (weight: number, opacity: number) => {
   const color2 = [190, 243, 246];
@@ -20,22 +22,59 @@ const getColorFromGradient = (weight: number, opacity: number) => {
 };
 
 export default function Skills() {
-  const sectionClass = "w-full lg:w-1/2 lg:px-[10%]";
+  const sectionTrail = useTrail(4, {
+    opacity: 1,
+    y: 0,
+    from: { opacity: 0, y: -50 },
+    config: {
+      duration: 200,
+      easing: easings.easeOutCubic,
+    },
+  });
+
+  const listTrail = useTrail(20, {
+    opacity: 1,
+    y: 0,
+    width: "100%",
+    from: { opacity: 0, y: -50, width: "0" },
+    config: {
+      duration: 300,
+      easing: easings.easeOutExpo,
+    },
+  });
+
+  const dividerStyle = useSpring({
+    from: { opacity: 0, height: "0" },
+    to: { opacity: 1, height: "60%" },
+    config: {
+      duration: 1000,
+      easing: easings.easeOutExpo,
+    },
+  });
+
+  const sectionClass = "w-full lg:w-1/2 lg:px-[10%] xl:px-[15%]";
   const titleClass = "uppercase text-xl font-bold mb-2";
 
   return (
     <main className="flex min-h-screen lg:h-screen flex-col items-center justify-between pb-32 lg:pb-4 pt-40 lg:pt-24 2xl:pt-48 px-[20%] lg:px-[15%] overflow-hidden">
-      <div className="divider hidden lg:block fixed left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] rounded-full h-[60%] w-1 bg-zinc-200" />
+      <animated.div
+        className="divider hidden lg:block fixed left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] rounded-full h-[60%] w-1 bg-zinc-200"
+        style={dividerStyle}
+      />
       <div className="flex flex-col flex-wrap w-full gap-y-16 text-md h-full items-center">
-        <div className={sectionClass + " coding"}>
+        <animated.div
+          className={sectionClass + " coding"}
+          style={sectionTrail[0]}
+        >
           <h3 className={titleClass}>Coding</h3>
-          {coding.map((item) => (
-            <div
+          {coding.map((item, i) => (
+            <animated.div
               key={item.name}
-              className="flex items-baseline gap-2 justify-between mb-2"
+              className="flex items-baseline gap-2 justify-between mb-2 overflow-hidden"
+              style={listTrail[i]}
             >
-              <p>{item.name}</p>
-              <div className="score flex items-end justify-end h-6 gap-1 w-[60%] lg:w-full">
+              <p className="w-[35%]">{item.name}</p>
+              <div className="score flex items-end justify-end h-6 gap-[2px] w-[60%] lg:w-full min-w-[60%]">
                 {[...Array(10)].map((_, ix) => (
                   <div
                     className="column w-4"
@@ -51,13 +90,20 @@ export default function Skills() {
                   />
                 ))}
               </div>
-            </div>
+            </animated.div>
           ))}
-        </div>
-        <div className={sectionClass + " skills"}>
+        </animated.div>
+        <animated.div
+          className={sectionClass + " skills"}
+          style={sectionTrail[1]}
+        >
           <h3 className={titleClass}>Other skills</h3>
-          {skills.map((item) => (
-            <div key={item.name} className="mb-3">
+          {skills.map((item, i) => (
+            <animated.div
+              key={item.name}
+              className="mb-3 overflow-hidden text-nowrap"
+              style={listTrail[5 + i]}
+            >
               <FontAwesomeIcon
                 icon={faCircleCheck}
                 size="xs"
@@ -65,25 +111,39 @@ export default function Skills() {
                 color="#8685a7"
               />
               {item.name}
-            </div>
+            </animated.div>
           ))}
-        </div>
+        </animated.div>
         <div className="basis-full hidden lg:block" />
         <div className="filler hidden lg:block h-4" />
-        <div className={sectionClass + " languages break-before-column	"}>
+        <animated.div
+          className={sectionClass + " languages break-before-column	"}
+          style={sectionTrail[2]}
+        >
           <h3 className={titleClass}>Languages</h3>
-          {languages.map((item) => (
-            <div key={item.name} className="mb-2">
+          {languages.map((item, i) => (
+            <animated.div
+              key={item.name}
+              className="mb-2 overflow-hidden text-nowrap"
+              style={listTrail[10 + i]}
+            >
               {item.flag}
               <span className="ml-2">{item.name}</span>
               <span className="font-extralight"> - {item.level}</span>
-            </div>
+            </animated.div>
           ))}
-        </div>
-        <div className={sectionClass + " certificates"}>
+        </animated.div>
+        <animated.div
+          className={sectionClass + " certificates"}
+          style={sectionTrail[3]}
+        >
           <h3 className={titleClass}>Certificates</h3>
-          {certificates.map((item) => (
-            <div key={item.name} className="flex gap-x-2">
+          {certificates.map((item, i) => (
+            <animated.div
+              key={item.name}
+              className="flex gap-x-2 overflow-hidden text-nowrap"
+              style={listTrail[15 + i]}
+            >
               <FontAwesomeIcon
                 icon={faFileSignature}
                 size="xs"
@@ -96,9 +156,9 @@ export default function Skills() {
                   {item.istitute} - {item.date}
                 </p>
               </div>
-            </div>
+            </animated.div>
           ))}
-        </div>
+        </animated.div>
       </div>
     </main>
   );

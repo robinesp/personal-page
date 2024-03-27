@@ -5,15 +5,15 @@ const coding = [
   },
   {
     name: "Vue.js",
-    score: 1,
+    score: 0.9,
   },
   {
     name: "Angular",
-    score: 0.5,
+    score: 0.6,
   },
   {
     name: "PHP",
-    score: 0.9,
+    score: 0.8,
   },
   {
     name: "Python",
