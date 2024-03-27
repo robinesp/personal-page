@@ -57,12 +57,13 @@ export default function Contact() {
         {[
           ["linkedin", "https://www.linkedin.com/in/robin-esposito/"],
           ["email", "mailto:robin.esposito1995@gmail.com"],
-          ["download cv", ""],
+          ["download cv", "/CV_Robin_Esposito.pdf"],
         ].map(([title, href], ix) => (
           <animated.div key={title} style={trail[3 - ix]}>
             <Link
               href={href}
               target="_blank"
+              download={title === "download cv"}
               className="flex items-center gap-2 mr-auto
               relative before:content-[''] before:absolute before:block before:w-full before:h-[2px] 
               before:bottom-0 before:left-0 before:bg-[#2e2e2e]
