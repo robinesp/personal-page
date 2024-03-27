@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 import { Poppins } from "next/font/google";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "./globals.css";
@@ -25,6 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={fontClass.className + " bg-[#f8f6f2] text-[#2e2e2e]"}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
