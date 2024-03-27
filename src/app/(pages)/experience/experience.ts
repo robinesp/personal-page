@@ -59,7 +59,7 @@ const items = [
     companyLogo: "/logos/getconnected.svg",
     title: "Bachelor thesis project",
     time: "2016",
-    place: "Bolgogna, IT",
+    place: "Bologna, IT",
     description:
       "Development of an AR application for interior design to allow users to visualise furniture holograms in their own house. Implemented for the Microsoft HoloLens visor.",
     tags: ["Augmented reality", "MS HoloLens", "C#", ".NET", "Unity3D"],

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import items from "./items";
+import items from "./experience";
 import {
   animated,
   easings,
