@@ -52,7 +52,7 @@ export default function Skills() {
     },
   });
 
-  const sectionClass = "w-full lg:w-1/2 lg:px-[10%] xl:px-[15%]";
+  const sectionClass = "w-full lg:w-1/2 lg:px-[5%] xl:px-[10%] 2xl:px-[15%]";
   const titleClass = "uppercase text-xl font-bold mb-2";
 
   return (

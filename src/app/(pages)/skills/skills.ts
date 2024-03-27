@@ -54,12 +54,12 @@ const languages = [
   {
     name: "Spanish",
     flag: "🇪🇸",
-    level: "A2",
+    level: "conversational",
   },
   {
     name: "Dutch",
     flag: "🇳🇱",
-    level: "B1",
+    level: "basic",
   },
 ];
 
