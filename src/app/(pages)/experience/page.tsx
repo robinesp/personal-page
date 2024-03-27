@@ -71,7 +71,7 @@ export default function Experience() {
       pointerApi.start(
         entering
           ? { scale: 8, top: enteringTop, backgroundColor: "#e4e4e7" }
-          : { scale: 1, top: pointerPositionY, backgroundColor: "#2e2e2e" }
+          : { scale: 1, top: pointerPositionY, backgroundColor: "#8685a7" }
       );
     },
   });
