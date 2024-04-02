@@ -90,7 +90,7 @@ export default function Experience() {
   }, []);
 
   return (
-    <main className="flex min-h-screen flex-col justify-between mt-64 lg:mt-72 mb-[32rem]">
+    <main className="flex min-h-screen flex-col justify-between mt-64 lg:mt-72 pb-[32rem]">
       {isLoaded && (
         <animated.div
           id="pointer"
