@@ -52,7 +52,7 @@ export default function Skills() {
     },
   });
 
-  const sectionClass = "w-full lg:w-1/2 lg:px-[5%] xl:px-[10%] 2xl:px-[15%]";
+  const sectionClass = "w-full lg:w-1/2 lg:px-[5%] xl:px-[10%] 2xl:px-[13%]";
   const titleClass = "uppercase text-xl font-bold mb-2";
 
   return (
@@ -141,7 +141,7 @@ export default function Skills() {
           {certificates.map((item, i) => (
             <animated.div
               key={item.name}
-              className="flex gap-x-2 overflow-hidden text-nowrap"
+              className="flex gap-x-2 overflow-hidden lg:text-nowrap"
               style={listTrail[15 + i]}
             >
               <FontAwesomeIcon

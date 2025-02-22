@@ -6,8 +6,8 @@ const items = [
     time: "2022-2024",
     place: "Amsterdam, NL",
     description:
-      "Research and development project: management platform for microservices based on event-driven architecture. Serverless Node.js infrastructure with React UI.",
-    tags: ["React", "Node.js", "Serverless", "Kafka", "event-driven", "AWS"],
+      "Leading the frontend development of a management platform for microservices based on event-driven architecture. Design and implementation of the React platform.",
+    tags: ["React", "Node.js", "Cypress", "shadcn", "event-driven", "AWS"],
   },
   {
     companyName: "Rentman",

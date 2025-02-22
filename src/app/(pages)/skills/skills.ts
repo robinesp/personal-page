@@ -1,15 +1,19 @@
 const coding = [
   {
     name: "React",
-    score: 0.8,
+    score: 0.9,
   },
   {
     name: "Vue.js",
-    score: 0.9,
+    score: 0.8,
   },
   {
     name: "Angular",
     score: 0.6,
+  },
+  {
+    name: "Node.js",
+    score: 0.9,
   },
   {
     name: "PHP",
@@ -36,7 +40,7 @@ const skills = [
     name: "Project management",
   },
   {
-    name: "Communication and collaboration",
+    name: "Interpersonal skills",
   },
 ];
 
