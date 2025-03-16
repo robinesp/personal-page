@@ -79,7 +79,7 @@ const certificates = [
     date: 2021,
   },
   {
-    name: "IELTS Acedemic - Band 8",
+    name: "IELTS Academic - Band 8",
     istitute: "British Council",
     date: 2016,
   },
