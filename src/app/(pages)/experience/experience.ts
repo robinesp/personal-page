@@ -3,7 +3,7 @@ const items = [
     companyName: "Virtuagym",
     companyLogo: "/logos/virtuagym.webp",
     title: "Software engineer",
-    time: "2022-2024",
+    time: "2022-2025",
     place: "Amsterdam, NL",
     description:
       "Leading the frontend development of a management platform for microservices based on event-driven architecture. Design and implementation of the React platform.",
