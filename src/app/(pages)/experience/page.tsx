@@ -21,8 +21,10 @@ export default function Experience() {
 
   const [isLoaded, setIsLoaded] = useState(false);
   const logoRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const timelineRef = useRef<HTMLDivElement | null>(null);
   const logoSize = 35;
   const [pointerPositionX, setPointerPositionX] = useState(0);
+  const [barHeight, setBarHeight] = useState(0);
   const pointerPositionY = 300;
   const pointerSize = 8;
 
@@ -77,20 +79,32 @@ export default function Experience() {
   });
 
   useEffect(() => {
-    const updatePointerX = () => {
+    const updateLayout = () => {
       const firstLogo = logoRefs.current[0]?.getBoundingClientRect() as DOMRect;
       setPointerPositionX(
         firstLogo.left + firstLogo.width / 2 - pointerSize / 2
       );
+      if (timelineRef.current) {
+        setBarHeight(timelineRef.current.offsetHeight);
+      }
     };
-    window.addEventListener("resize", updatePointerX);
-    updatePointerX();
+    window.addEventListener("resize", updateLayout);
+    updateLayout();
     setTimeout(() => setIsLoaded(true), 1000);
-    return () => window.removeEventListener("resize", updatePointerX);
+    return () => window.removeEventListener("resize", updateLayout);
   }, []);
 
+  const barWidth = 10;
+  const barLeft = pointerPositionX + pointerSize / 2 - barWidth / 2;
+
   return (
-    <main className="flex min-h-screen flex-col justify-between mt-64 lg:mt-72 pb-[32rem]">
+    <main className="relative flex min-h-screen flex-col justify-between mt-64 lg:mt-72 pb-[32rem]">
+      {pointerPositionX > 0 && (
+        <div
+          className="absolute top-0 w-[10px] bg-zinc-200 rounded-3xl"
+          style={{ left: barLeft, height: barHeight, zIndex: 0 }}
+        />
+      )}
       {isLoaded && (
         <animated.div
           id="pointer"
@@ -104,7 +118,7 @@ export default function Experience() {
           }}
         />
       )}
-      <div id="timeline" className="flex flex-col justify-start gap-8">
+      <div ref={timelineRef} id="timeline" className="relative z-[2] flex flex-col justify-start gap-8">
         {items.map((item, ix) => (
           <animated.div
             className="flex mb-4 lg:min-h-44"
@@ -123,10 +137,9 @@ export default function Experience() {
               </span>
             </animated.div>
             <div className="middle relative w-[25%] lg:w-[10%]">
-              <div className="vertical-line absolute z-[0] top-[-24px] left-[50%] translate-x-[-50%] h-[300px] lg:h-[350px] w-[10px] bg-zinc-200 rounded-3xl" />
               <div
-                ref={(el) => (logoRefs.current[ix] = el)}
-                className="logo-container z-[20] absolute flex justify-center items-center lg:top-2 left-[50%] translate-x-[-50%] w-full"
+                ref={(el) => { logoRefs.current[ix] = el; }}
+                className="logo-container absolute flex justify-center items-center lg:top-2 left-[50%] translate-x-[-50%] w-full"
               >
                 <animated.div
                   className="flex items-center overflow-hidden lg:top-2 w-[35px] h-[35px] bg-white rounded-full"
